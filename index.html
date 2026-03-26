@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FocusForge - Task Manager</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Top Navbar -->
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo">⚡</span>
+      <div>
+        <h1>FocusForge</h1>
+        <p>Task Manager + Productivity Hub</p>
+      </div>
+    </div>
+
+    <div class="top-actions">
+      <div class="counter">
+        <span class="counter-title">✅ Done Today</span>
+        <span class="counter-value" id="doneCounter">00</span>
+      </div>
+
+      <button class="btn btn-ghost" id="themeToggle">🌙 Dark Mode</button>
+    </div>
+  </header>
+
+  <!-- Main Layout -->
+  <div class="layout">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <nav class="nav">
+        <a class="nav-item active" href="#">📋 Dashboard</a>
+        <a class="nav-item" href="#">⏳ Today</a>
+        <a class="nav-item" href="#">🗓️ This Week</a>
+        <a class="nav-item" href="#">🚨 Overdue</a>
+        <a class="nav-item" href="#">🏷️ Labels</a>
+      </nav>
+
+
+      <div class="sidebar-card">
+        <h3>Focus Mode</h3>
+        <p class="muted">Minimal UI for deep work.</p>
+        <button class="btn btn-dark" id="focusMode">Enter Focus Mode</button>
+      </div>
+    </aside>
+
+    <!-- Content -->
+    <main class="content">
+
+      <!-- Add Task -->
+      <section class="card">
+        <div class="card-header">
+          <h2>➕ Add a Task</h2>
+          <span class="badge">Auto-sort: Nearest deadline</span>
+        </div>
+
+        <form class="task-form">
+          <div class="grid-2">
+            <div class="form-group">
+              <label>Title</label>
+              <input id="taskTitle" type="text" placeholder="e.g., Complete Biology Notes" />
+            </div>
+
+            <div class="form-group">
+              <label>Deadline</label>
+              <input id="taskDeadline" type="datetime-local" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Description</label>
+            <textarea id="taskDesc" placeholder="Add more details..."></textarea>
+          </div>
+
+          <div class="grid-3">
+            <div class="form-group">
+              <label>Priority</label>
+              <select id="taskPriority">
+                <option>High</option>
+                <option selected>Medium</option>
+                <option>Low</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>Labels / Tags</label>
+              <input id="taskTags" type="text" placeholder="e.g., Study, Health, Project" />
+            </div>
+
+          </div>
+
+          <div class="form-actions">
+            <button type="button" class="btn btn-primary" id="addTaskBtn">Add Task</button>
+            <button type="button" class="btn btn-ghost" id="clearBtn">Clear</button>
+          </div>
+        </form>
+      </section>
+
+      <!-- Filters -->
+      <section class="card">
+        <div class="card-header">
+          <input type="text" id="searchInput" placeholder="🔍 Search tasks..." />
+          <h2>🎯 Filters</h2>
+        </div>
+
+        <div class="filters">
+          <button class="chip active">All</button>
+          <button class="chip">High Priority</button>
+          <button class="chip">Medium</button>
+          <button class="chip">Low</button>
+          <button class="chip">Overdue</button>
+          <button class="chip">Today</button>
+          <button class="chip">This Week</button>
+          <button class="chip">Tags</button>
+        </div>
+      </section>
+
+      <!-- Overdue -->
+      <section class="card overdue">
+        <div class="card-header">
+          <h2>🚨 Overdue Tasks</h2>
+          <span class="badge badge-danger">Urgent</span>
+        </div>
+
+        <div class="task-list" id="overdueList">
+        </div>
+      </section>
+
+      <!-- Tasks -->
+      <section class="card">
+        <div class="card-header">
+          <h2>📌 Upcoming Tasks</h2>
+          <span class="badge">Sorted by deadline</span>
+        </div>
+
+        <div class="task-list" id="upcomingList">
+        </div>
+      </section>
+      
+      <section class="card">
+      <div class="card-header">
+        <h2>✅ Completed Tasks</h2>
+      </div>
+
+      <div class="task-list" id="completedList"></div>
+    </section>
+      <!-- Productivity Hub -->
+      <section class="grid-2 productivity">
+
+        <!-- Pomodoro -->
+        <section class="card">
+          <div class="card-header">
+            <h2>⏱️ Pomodoro Timer</h2>
+            <span class="badge" id="timerBadge">25:00</span>
+          </div>
+
+          <div class="pomodoro-ui">
+            <div class="timer-circle">
+              <span class="timer-text" id="timerText">25:00</span>
+              <span class="muted">Focus Session</span>
+            </div>
+
+            <div class="grid-3">
+              <button class="btn btn-primary" id="startBtn">Start</button>
+              <button class="btn btn-light" id="pauseBtn">Pause</button>
+              <button class="btn btn-ghost" id="resetBtn">Reset</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- Music Widget -->
+        <section class="card">
+          <div class="card-header">
+            <h2>🎧 Focus Music</h2>
+            <span class="badge">Lo-fi / Chill</span>
+          </div>
+
+          <div class="music-ui">
+            <div class="music-grid">
+              <button class="chip">Lo-fi</button>
+              <button class="chip">Chill Hop</button>
+              <button class="chip">White Noise</button>
+              <button class="chip">Concentration</button>
+            </div>
+
+            <div class="embed-box">
+              <p class="muted">YouTube embed area</p>
+              <iframe id="musicPlayer"
+                width="100%"
+                height="150"
+                src="https://www.youtube.com/embed/jfKfPfyJRdk"
+                frameborder="0"
+                allow="autoplay">
+              </iframe>
+
+            </div>
+          </div>
+        </section>
+
+      </section>
+
+    </main>
+  </div>
+
+  <footer class="footer">
+    <p>© 2026 FocusForge — Designed for productivity ✨</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
