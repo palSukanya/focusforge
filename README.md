@@ -3,10 +3,15 @@
 ![Status](https://img.shields.io/badge/status-active-success)
 ![Tech](https://img.shields.io/badge/stack-PHP%20%7C%20MySQL%20%7C%20JS-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
+![Stars](https://img.shields.io/github/stars/palSukanya/focusforge?style=flat)
+![Forks](https://img.shields.io/github/forks/palSukanya/focusforge?style=flat)
+![Last Commit](https://img.shields.io/github/last-commit/palSukanya/focusforge)
 
 > ⚡ **FocusForge** is a modern full-stack productivity system that combines task management, real-time updates, and built-in focus tools like Pomodoro — all in one seamless experience.
 
 > 💡 Built to simulate real-world SaaS applications with dynamic UI, secure backend architecture, and productivity-first design.
+
+📸 **[Screenshots](#-screenshots)**
 
 ---
 
@@ -78,6 +83,7 @@ FocusForge/
 ├── completeTask.php
 ├── deleteTask.php
 ├── updateTask.php
+├── updateProgress.php
 ├── getTasks.php
 ├── db.php
 ├── index.html
@@ -94,7 +100,7 @@ FocusForge/
 ### 1️⃣ Clone Repository
 
 ```bash
-git clone https://github.com/your-username/focusforge.git
+git clone https://github.com/palSukanya/focusforge.git
 cd focusforge
 ```
 
@@ -128,13 +134,14 @@ http://localhost/focusforge/
 
 ## 🔌 API Endpoints
 
-| Method | Endpoint         | Description            |
-| ------ | ---------------- | ---------------------- |
-| POST   | addTask.php      | Add new task           |
-| GET    | getTasks.php     | Fetch all tasks        |
-| POST   | updateTask.php   | Update task            |
-| POST   | deleteTask.php   | Delete task            |
-| POST   | completeTask.php | Mark task as completed |
+| Method | Endpoint            | Description              |
+| ------ | ------------------- | ------------------------ |
+| POST   | addTask.php         | Add new task             |
+| GET    | getTasks.php        | Fetch all tasks          |
+| POST   | updateTask.php      | Update task details      |
+| POST   | updateProgress.php  | Update task progress %   |
+| POST   | deleteTask.php      | Delete task              |
+| POST   | completeTask.php    | Mark task as completed   |
 
 ---
 
@@ -148,14 +155,14 @@ http://localhost/focusforge/
 
 ## 📸 Screenshots
 
-> 🚧 Add actual images here to boost impact
 
-Example:
+| Dashboard | Task Creation |
+|-----------|---------------|
+| ![Dashboard](assets/screenshots/dashboard.png) | ![Add Task](assets/screenshots/add-task.png) |
 
-* 🏠 Dashboard View
-* ➕ Task Creation
-* ⏱️ Pomodoro Timer
-* 🌙 Dark Mode
+| Pomodoro Timer | Dark Mode |
+|----------------|-----------|
+| ![Pomodoro](assets/screenshots/pomodoro.png) | ![Dark Mode](assets/screenshots/dark-mode.png) |
 
 ---
 
@@ -167,6 +174,28 @@ Example:
 * 📅 Calendar Integration
 * 🤖 AI-based Task Prioritization
 * 🧩 Drag & Drop Kanban Board
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome! Here's how to get started:
+
+```bash
+# 1. Fork the repository
+# 2. Create your feature branch
+git checkout -b feature/your-feature-name
+
+# 3. Commit your changes
+git commit -m "Add: your feature description"
+
+# 4. Push to your branch
+git push origin feature/your-feature-name
+
+# 5. Open a Pull Request
+```
+
+Please keep PRs focused and include a clear description of what was changed and why.
 
 ---
 
@@ -182,10 +211,10 @@ Example:
 
 ## 📄 License
 
-This project is licensed under the MIT License.
+This project is licensed under the [MIT License](LICENSE).
 
 ---
 
 ## ⭐ Show Your Support
 
-If you like this project, give it a ⭐ on GitHub!
+If you find this project useful, give it a ⭐ on GitHub — it helps a lot!
